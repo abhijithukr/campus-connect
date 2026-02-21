@@ -7,14 +7,13 @@ interface FetchOptions extends RequestInit {
 async function fetchAPI(endpoint: string, options: FetchOptions = {}) {
   const { token, ...fetchOptions } = options;
   
-  const headers: HeadersInit = {
-    'Content-Type': 'application/json',
-    ...(options.headers || {}),
-  };
-  
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
-  }
+  const headers: any = {
+  'Content-Type': 'application/json'
+};
+
+if (token) {
+  headers['Authorization'] = `Bearer ${token}`;
+}
 
   const res = await fetch(`${API_URL}${endpoint}`, {
     ...fetchOptions,
@@ -125,3 +124,4 @@ export const setUser = (user: object) => {
 export const removeUser = () => {
   localStorage.removeItem('user');
 };
+
