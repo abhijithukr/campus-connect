@@ -7,7 +7,7 @@ interface FetchOptions extends RequestInit {
 async function fetchAPI(endpoint: string, options: FetchOptions = {}) {
   const { token, ...fetchOptions } = options;
   
-  const headers: any = {
+  const headers: Record<string, string> = {
   'Content-Type': 'application/json'
 };
 
@@ -124,4 +124,5 @@ export const setUser = (user: object) => {
 export const removeUser = () => {
   localStorage.removeItem('user');
 };
+
 
